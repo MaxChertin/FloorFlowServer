@@ -9,10 +9,14 @@ let connectedClients = 0;
 const FCM_ENDPOINT = 'https://fcm.googleapis.com/fcm/send';
 const SERVER_KEY = 'AAAAJgRLLug:APA91bEGEJiKWXQpn0g0Bb0gra2Xk69PwGBUWL7PEe-YFkpquA7eSnty8fmbHgZyRxujG87efRAmp1iD46-kw7Chx6PZ0hcW8qzyok_rwKzj7bp4ZDr_mrBXsa6Jp6MFjb4VMtrl0H9U';
 
+const TARGET = 'https://floor-flow-server.onrender.com';
 const INTERVAL_DELAY = 14 * 60 * 1000;
 
 const heartbeat = () => {
-    console.log('server-heartbeat');
+    fetch(TARGET)
+    .finally(() => {
+        console.log('server-heartbeat');
+    });
 }
 
 setInterval(heartbeat, INTERVAL_DELAY);
